@@ -1,6 +1,8 @@
 package com.spring.boot2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,31 +13,27 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.boot2.entities.User;
 import com.spring.boot2.repositories.UserRepository;
 
-import antlr.collections.List;
+import java.util.List;
 
 @RestController
-@RequestMapping (value = "/users")
+@RequestMapping(value = "/users")
 public class UserController {
-	
+
 	@Autowired
 	private UserRepository repository;
 	
 	@GetMapping
-	public List findAll() {
-		List result = (List) repository.findAll();
-		return result;
+	public List<User> findAll() {
+		return repository.findAll();
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public User findById(@PathVariable long id) {
-		User result =  repository.findById(id).get();
-		return result;
+	public User findAll(@PathVariable Long id) {
+		return repository.findById(id).get();
 	}
 	
 	@PostMapping
 	public User insert(@RequestBody User user) {
-		User result =  repository.save(user);
-		return result;
+		return repository.save(user);
 	}
-
 }

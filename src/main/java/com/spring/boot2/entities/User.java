@@ -11,32 +11,25 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_user")
 public class User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String name;
 	private String email;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "departmant_id")
+	@JoinColumn(name = "department_id")
 	private Department department;
-	
+
 	public User() {
-		
 	}
 
-	public User(long id, String name, String email, Department department) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.department = department;
-	}
-
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -63,8 +56,4 @@ public class User {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
-	
-	
-	
-	
 }
